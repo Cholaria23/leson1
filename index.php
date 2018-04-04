@@ -9,3 +9,4 @@ function evenNum($even) {
  	}
 return $arr1;
 }
+var_dump(evenNum(10));
