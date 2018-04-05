@@ -1,5 +1,6 @@
-function replArr($num){
-	$arr=[10,2,5,6,7,9,11,25];
+<?php
+class Array_Repl () {
+function repl_arr($a,$num){
 	$i=0;
 	$c=1;
 	$arr1=[];
@@ -13,5 +14,8 @@ function replArr($num){
 	}
 	echo "Количество замен в массиве =",$arr1;
 return $arr;
+  }
 }
-var_dump(replArr(10));
+$a=[10,2,5,6,7,9,11,25];
+$obj=new Array_Repl($a);
+var_dump($obj->repl_arr(10));
