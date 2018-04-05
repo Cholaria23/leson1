@@ -1,4 +1,6 @@
-function evenNum($even) {
+<?php
+class Array_Even {
+function even_num($even) {
  $arr1=[];
  	 for ($i=0;$even!=0&$even>0; $i++){
  	 	if ($even>0&$even%2==0){
@@ -8,5 +10,8 @@ function evenNum($even) {
  	 		echo "No Even! or Negative Number!";}
  	}
 return $arr1;
+ }
 }
-var_dump(evenNum(10));
+
+$obj= new Array_Even();
+var_dump(obj->even_num(10));
