@@ -14,4 +14,4 @@ return $arr1;
 }
 
 $obj= new Array_Even();
-var_dump(obj->even_num(10));
+var_dump($obj->even_num(10));
