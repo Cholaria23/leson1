@@ -1,20 +1,25 @@
 <?php
-class Array_Repl () {
-function repl_arr($a,$num){
+class Array_Repl 
+{ public $a;
+	function __construct(
+		array $a) {
+		$this->a = $a;
+	}
+ public function repl_arr($num){
 	$i=0;
 	$c=1;
 	$arr1=[];
-	foreach ($arr as $key=> $value) {
+	foreach ($this->a as $key=> $value) {
 		if($value>$num){
-		$arr[$i]=$num;
+		$this->a[$i]=$num;
 		$key=$i++;# code...
 		$arr1=$c++;
-		// echo $arr1;
 		}else {$key=$i++;}
 	}
 	echo "Количество замен в массиве =",$arr1;
-return $arr;
+	return $this->a;
   }
+
 }
 $a=[10,2,5,6,7,9,11,25];
 $obj=new Array_Repl($a);
