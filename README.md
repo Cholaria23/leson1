@@ -8,4 +8,4 @@ class_Array_Repl.php;
 class_Max_My.php;
 
 // Задача №2) Выводит определенное количество элементов  последовательности Фибоначчи.
-class_Num_Fibo.php
+class_Numbers_Fibonachi.php
