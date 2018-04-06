@@ -9,9 +9,9 @@ class Max_My
 	public function myCount()
 	{$c =0;
 	  foreach ($this->arr as $value) 
-	{
-	  $c++;# code...
-	}
+		{
+		  $c++;# code...
+		}
 	return $c;		
 	}
 	 public function myMax2()
