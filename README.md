@@ -12,3 +12,6 @@ class_Array_Repl.php;
 
 // Задача №5 Нахождение суммы всех елементов массива
 class_Array_Summa.php
+
+//  Задача №6 Сортировка по возрастанию в массиве
+class_Array_Sort.php
