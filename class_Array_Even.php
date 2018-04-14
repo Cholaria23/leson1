@@ -11,7 +11,7 @@ class Array_Even
  	 	 }else{ $even--;// Блок else для преобразования нечетного числа в четное
  	 		    $arr1[]=$even;
  	 		    echo "No Even! or Negative Number!";
-                }
+          }
  	  }
  return $arr1;
  }
