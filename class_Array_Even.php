@@ -8,7 +8,7 @@ class Array_Even
  	  for ($i=0;$even!=0&$even>0; $i++)
       {if ($even>0&$even%2==0)
         {$even=$arr1[]=$even-2;		
- 	 	     }else{ $even--;
+ 	 	     }else{ $even--;// Блок else для преобразования нечетного числа в четное
  	 		           $arr1[]=$even;
  	 		           echo "No Even! or Negative Number!";
                 }
