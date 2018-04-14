@@ -16,7 +16,7 @@ class Array_Sort
 			{
 				$c++;# code...
 			}
-			echo "Количество чисел в массиве =".$c."<br>";
+			echo "Количество елементов в массиве =".$c."<br>";
 			return $c;		
 		}	
 			public function my_sort(array $arr)
@@ -26,7 +26,7 @@ class Array_Sort
 					
 				foreach ($arr as $i =>$value) 
 				 {	
-					for ($i=0; $i< $count-1; $i++ ) 
+					for ($i=0; $i < $count-1; $i++ ) 
 						{ $inc++;
 							if ($arr[$i] > $arr[$i+1])
 							{
@@ -35,23 +35,14 @@ class Array_Sort
 							$arr[$i]= $arr[$i+1];
 							 
 							$arr[$i+1]=$temp;
-							 
-							// $count--;
-							echo "Количество чисел в массиве цикл =".$count."<br>";
 							}
-						
-						// $count--;
 						}
-
-					// return $arr[$i];	
 				 }
 				 echo $inc;
 			return $arr;	
 		  		}
-
 }
 
 $arr = [1,5,2,4,3,-11,-2,6,8,102,100,1000];
 $obj= new Array_Sort($arr);
 var_dump($obj->my_sort($arr));
-// echo '<p>'."Сортировка по возрастанию ".$obj->my_sort($arr),'</p>';
