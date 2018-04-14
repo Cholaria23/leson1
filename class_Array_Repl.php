@@ -22,7 +22,7 @@ class Array_Replace // класс для замены числа в массив
 					 $this->a[$i]=$num;
 					 $key=$i++;# code...
 					 $arr1=$c++;
-					} else {$key=$i++;}
+					} //else {$key=$i++;}
 			}
 		echo "Количество замен в массиве =",$arr1;
 		return $this->a;
@@ -31,4 +31,4 @@ class Array_Replace // класс для замены числа в массив
 }
 $a=[10,2,5,6,7,9,11,25]; // массив
 $obj=new Array_Replace($a); // новый объект
-var_dump($obj->repl_arr(10));
+var_dump($obj->repl_arr(11));
