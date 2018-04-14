@@ -3,47 +3,55 @@
 /* Задача №6 Сортировка по возрастанию в массиве
 */
 class Array_Sort
-{ public $arr;
+{ 
+	public $arr;
   	function __construct (array $arr)
 	{
-		$this->arr =$arr;
+		$this->arr = $arr;
 	}
-		public function myCount()
+		public function myCount(array $arr)
 		{
 			$c =0;
-			foreach ($this->arr as $value) 
+			foreach ($arr as $value) 
 			{
 				$c++;# code...
 			}
+			echo "Количество чисел в массиве =".$c."<br>";
 			return $c;		
 		}	
-			public function my_sort()
-				{	$count = $this->myCount($this->arr);
-					// $ =0;
+			public function my_sort(array $arr)
+				{	
+					$count = $this->myCount($arr);
+					$inc = 0;
 					
-				foreach ($this->arr as $i=>$value) 
+				foreach ($arr as $i =>$value) 
 				 {	
-					for ($i=0; $i<$count-1;$i++ ) 
-						{ if ($this->arr[$i] > $this->arr[$i+1])//]||$this->arr[$i] = $this->arr[$i+1]
+					for ($i=0; $i< $count-1; $i++ ) 
+						{ $inc++;
+							if ($arr[$i] > $arr[$i+1])
 							{
-							$arr[]=$max=$this->arr[$i];
-							 // echo '<p>',"Максимальное число в массиве =",$i,"=>",$max,'</p>';
-							$arr[]=$this->arr[$i]= $this->arr[$i+1];
+							$temp=$arr[$i];
 							 
-							$arr[]=$this->arr[$i+1]=$max;
-							 // echo '<p>',"Минимальное число в масиве =",$i,$this->arr[$i+1],'</p>';
+							$arr[$i]= $arr[$i+1];
+							 
+							$arr[$i+1]=$temp;
+							 
+							// $count--;
+							echo "Количество чисел в массиве цикл =".$count."<br>";
 							}
 						
+						// $count--;
 						}
 
-					return $this->arr[$i];	
+					// return $arr[$i];	
 				 }
-			//return $arr[$i];	
+				 echo $inc;
+			return $arr;	
 		  		}
 
 }
 
-$arr = [1,5,2,4,3,-1,-2,6,8,10,100,1000];
+$arr = [1,5,2,4,3,-11,-2,6,8,102,100,1000];
 $obj= new Array_Sort($arr);
-var_dump($obj->arr);
-echo '<p>'."Сортировка по возрастанию ".$obj->my_sort(),'</p>';
+var_dump($obj->my_sort($arr));
+// echo '<p>'."Сортировка по возрастанию ".$obj->my_sort($arr),'</p>';
