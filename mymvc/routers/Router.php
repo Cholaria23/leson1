@@ -25,12 +25,39 @@ class Router
 		// echo "Class Router, method run";
 		// Получить строку запроса
 		$url = $this->getURI();
-		echo $url;
+		// echo $url;
 		// Проверить наличие такого запроса в routes.php
 		foreach ($this->routes as $urlPattern => $path) 
 		{
-			echo "<br>$urlPattern -> $path";	# code...
+			// echo "<br>$urlPattern -> $path";	# code...
+		// Сравниваем $urlPattern и $url
+			if (preg_match("~$urlPattern~", $url))
+			{
+				// echo '+';
+				// echo $path;
+			
+				// Определяем какой контролер
+				// и action обрабатывает запрос
+				$segments = explode ("/",$path);
+
+				// echo '<pre>';
+				// print_r ($segments);
+				// echo "<pre>";
+				$controllerName = array_shift($segments).'Controller';
+                // Делаем первый символ заглавным в строке для контролера
+                $controllerName = ucfirst($controllerName);
+                $actionName = 'action'.ucfirst(array_shift($segments));
+                // echo "<pre>";
+                // print_r ($actionName);
+                // echo '<pre>';
+
+				echo '<br>Класс:'.$controllerName;
+				echo '<br> Метод:'.$actionName;
+
+			}
 		}
+		
+
 
 		// Подключить файл класса-контролера
 

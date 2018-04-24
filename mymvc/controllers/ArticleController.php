@@ -1,1 +1,8 @@
-ArticleController.php
+<?php
+	class ArticleController
+	{
+		public function actionList()
+		{
+			return true;
+		}
+	}
