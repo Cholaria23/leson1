@@ -51,16 +51,32 @@ class Router
                 // print_r ($actionName);
                 // echo '<pre>';
 
-				echo '<br>Класс:'.$controllerName;
-				echo '<br> Метод:'.$actionName;
+				// echo '<br>Класс:'.$controllerName;
+				// echo '<br> Метод:'.$actionName;
+
+				// Подключить файл класса-контролера
+				$controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
+				if (file_exists($controllerFile))
+				{
+					include_once ($controllerFile);
+				}
+				//  Создать объект, вызвать метод (т.е. action)
+				$controllerObject = new $controllerName; // полиморфизм 
+				$result = $controllerObject->$actionName(); // вызов метода
+				
+				if ($result != null)
+				{
+					break;
+				}
+
 
 			}
 		}
 		
 
 
-		// Подключить файл класса-контролера
+		
 
-		//  Создать объект, вызвать метод (т.е. action)
+		
 	}
 }
