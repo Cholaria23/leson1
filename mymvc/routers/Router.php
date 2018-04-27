@@ -33,12 +33,18 @@ class Router
 		// Сравниваем $urlPattern и $url
 			if (preg_match("~$urlPattern~", $url))
 			{
+				// echo '<br>.Где ищем (запрос, который набрал пользователь):'.$url;
+				// echo '<br> Что ишем (совпадения из правила):'.$urlPattern;
+				// echo '<br>Кто обрабатывает:'.$path;
 				// echo '+';
 				// echo $path;
-			
+			  // Получаем внутрений путь из внешнего согласно правилу
+				$internalRoute = preg_replace("~$urlPattern~", $path, $url);
+
+				echo '<br><br>Нужно сформировать:'.$internalRoute;
 				// Определяем какой контролер
-				// и action обрабатывает запрос
-				$segments = explode ("/",$path);
+				// и action обрабатывает запрос и параметры
+				$segments = explode ("/",$internalRoute);
 
 				// echo '<pre>';
 				// print_r ($segments);
@@ -53,7 +59,15 @@ class Router
 
 				// echo '<br>Класс:'.$controllerName;
 				// echo '<br> Метод:'.$actionName;
+               
+                echo '<br>controller name:'.$controllerName;
+                echo '<br>action name:'.$actionName;
+               
+                $parameters = $segments;
+                
+                echo '<pre>'; print_r($parameters);
 
+                // die;
 				// Подключить файл класса-контролера
 				$controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
 				if (file_exists($controllerFile))
@@ -62,7 +76,9 @@ class Router
 				}
 				//  Создать объект, вызвать метод (т.е. action)
 				$controllerObject = new $controllerName; // полиморфизм 
-				$result = $controllerObject->$actionName(); // вызов метода
+				
+				// $result = $controllerObject->$actionName(); // вызов метода
+				$results = call_user_func_array(array($controllerObject,$actionName),$parameters);
 				
 				if ($result != null)
 				{

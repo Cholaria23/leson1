@@ -35,15 +35,41 @@
 // $result = preg_match($pattern, $string);
 
 // var_dump($result);
+/******************************/
+// Format: dd-mm-yyyy
+// $string = '21-11-2015';
+// // Год 2015 месяц 11 день 21
+// $pattern = '/([0-9]{2})-([0-9]{2})-([0-9]{4})/';
 
+// $replacement = 'Год $3, месяц $2, день $1';
+// echo preg_replace($pattern,$replacement,$string);
+// die;
 
+/**************************************************/
+
+//  Передача парметров при использовании ЧПУ
+
+// не ЧПУ
+// http://test2/news/?id=1235&category=sport  -> $_GET
+
+// $_GET['id'];
+// $_GET['category'];
+
+// ЧПУ
+// Где ищем (запрос , который набрал пользователь):http://test2/news/sport/1235
+// Что ищем (совпадения из правила): news/([a-z]+)/([0-9]+)
+// Кто обрабатывает: news/view/$1/$2
+// Нужно сформировать: news/view/sport/1235
+// Просмотр одной новости
+
+/**************************************************/
 //Front Controller
 
 //1. Общие настройки
 ini_set("display errors", 1);
 error_reporting(E_ALL);
 
-// 2. Подключение файлов сист
+// 2. Подключение файлов системы
 define ('ROOT', dirname(__FILE__));
 require_once (ROOT.'/routers/Router.php');
 // 3. Установка соединения  с БД
