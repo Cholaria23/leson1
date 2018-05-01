@@ -73,7 +73,7 @@ error_reporting(E_ALL);
 define ('ROOT', dirname(__FILE__));
 require_once (ROOT.'/routers/Router.php');
 // 3. Установка соединения  с БД
-
+require_once (ROOT.'/models/DB.php');
 // 4. Вызов Router
 $router = new Router();
 $router->run();

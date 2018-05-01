@@ -1,7 +1,7 @@
 <?php 
 return array (
 	
-	'news/([0-9]+)' => 'news/view',// actionView в NewsController
+	'news/([0-9]+)' => 'news/view/$1',// actionView в NewsController
 	// 'news/77' => 'news/view',
 	// ЧПУ
 // http://test2/news/sport/1235

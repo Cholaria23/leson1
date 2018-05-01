@@ -41,7 +41,7 @@ class Router
 			  // Получаем внутрений путь из внешнего согласно правилу
 				$internalRoute = preg_replace("~$urlPattern~", $path, $url);
 
-				echo '<br><br>Нужно сформировать:'.$internalRoute;
+				// echo '<br><br>Нужно сформировать:'.$internalRoute;
 				// Определяем какой контролер
 				// и action обрабатывает запрос и параметры
 				$segments = explode ("/",$internalRoute);
@@ -60,12 +60,12 @@ class Router
 				// echo '<br>Класс:'.$controllerName;
 				// echo '<br> Метод:'.$actionName;
                
-                echo '<br>controller name:'.$controllerName;
-                echo '<br>action name:'.$actionName;
+                // echo '<br>controller name:'.$controllerName;
+                // echo '<br>action name:'.$actionName;
                
                 $parameters = $segments;
                 
-                echo '<pre>'; print_r($parameters);
+                // echo '<pre>'; print_r($parameters);
 
                 // die;
 				// Подключить файл класса-контролера
@@ -78,7 +78,7 @@ class Router
 				$controllerObject = new $controllerName; // полиморфизм 
 				
 				// $result = $controllerObject->$actionName(); // вызов метода
-				$results = call_user_func_array(array($controllerObject,$actionName),$parameters);
+				$result = call_user_func_array(array($controllerObject,$actionName),$parameters);
 				
 				if ($result != null)
 				{
