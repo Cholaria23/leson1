@@ -1,6 +1,8 @@
 <?php
 namespace application\core;
 
+use application\core\View;
+
 class Router 
 {
 	protected $routes = [];
@@ -61,13 +63,22 @@ class Router
 					// Call Action
 					$conroller -> $action();
 
-				} else {echo 'Action Not Found'.$action;}
+				} else {
+						View::errorCode(404);
+						//echo 'Action Not Found'.$action;
+						}
 
-			} else { exit('Not found class'.$path);}
+			} else { 
+					View::errorCode(404);
+					// exit('Not found class'.$path);
+					}
 			// echo '<p> controllers:<b>'.$this->params['controller'].'</b></p>';
 			// echo '<p> controllers:<b>'.$this->params['action'].'</b></p>';
 			// echo 'find route';
-		}else{exit('Not found route');}
+		}else{
+				View::errorCode(403);
+				// exit('Not found route');
+			 }
 		// debug ($_SERVER);
 		// echo 'start';
 	}

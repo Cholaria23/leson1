@@ -30,5 +30,11 @@ return [
 
 		'controller' => 'news',
 		'action' => 'list',
+	],
+
+	'admin/main' =>[
+
+		'controller' => 'admin',
+		'action' => 'main',
 	]
 ];

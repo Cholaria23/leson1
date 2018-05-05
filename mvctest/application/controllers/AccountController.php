@@ -13,7 +13,9 @@ class AccountController extends Controller
 	public function loginAction()
 	{
 		// echo 'AccountController:loginAction';
-		$this->view->layout = 'admin';
+		// $this->view->layout = 'admin';
+		$this->before();
+		// $this->view->reDirect('/');// перенаправление страници логина на главную с помощью метода reDirect
 		$this->view->render('LogIn');
 		return true;
 	}
@@ -22,6 +24,7 @@ class AccountController extends Controller
 	{
 		
 		// echo 'AccountController:registerAction';
+		// $this->before();
 		$this->view->layout = 'admin';
 		$this->view->render('Registration');
 		// var_dump($this->route);
