@@ -15,6 +15,10 @@ class AccountController extends Controller
 		// echo 'AccountController:loginAction';
 		// $this->view->layout = 'admin';
 		$this->before();
+		if(!empty($_POST))
+		{
+			$this->view->message('status','message');
+		}
 		// $this->view->reDirect('/');// перенаправление страници логина на главную с помощью метода reDirect
 		$this->view->render('LogIn');
 		return true;
@@ -26,6 +30,10 @@ class AccountController extends Controller
 		// echo 'AccountController:registerAction';
 		// $this->before();
 		$this->view->layout = 'admin';
+		if(!empty($_POST))
+		{
+			$this->view->message('status','message');
+		}
 		$this->view->render('Registration');
 		// var_dump($this->route);
 		return true;

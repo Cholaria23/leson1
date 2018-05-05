@@ -14,17 +14,18 @@ class MainController extends Controller
 		// $params = ['id'=>5,];
 		// $data=$db->column('SELECT title FROM news where id=:id',$params);
 		// debug ($data);
-		// $vars = [
-		// 'name' => 'Vasy',
-		// 'age' => '88',
-		// ];
+		
 		// echo 'MainController:indexAction';
-		 $this->view->render('Main Page');
+		 // $this->view->render('Main Page');
 		// debug($this->view->render());
 
 		$result = $this->model->getNews();
+		$vars = [
+		 'news' => $result,
+		// 'age' => '88',
+		];
 		// debug($result);
-		// $this->view->render('Main Page',$vars);
+		 $this->view->render('Main Page',$vars);
 
 		// return true;
 	}
