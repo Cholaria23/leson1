@@ -10,8 +10,8 @@ class Main extends Model
 	{
 		echo 'Main:Model';
 		// var_dump($this->db->row());
-		// $result = $this->db->row("SELECT id,title FROM news");
-		// debug ($result);
-		// return $result;
+		$result = $this->db->row("SELECT id,title FROM news");
+		debug ($result);
+		return $result;
 	}
 }
