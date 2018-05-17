@@ -8,6 +8,10 @@
 
     <div class="example-wrapper">
         <h2>{{ post.title }}!</h2>
+        <div class="card-footer text-muted">
+            Posted on {{ post.datapost|date("m.d.Y") }} by
+            <a href="#">{{ post.authtor }}</a>
+        </div>
         <img class="card-img-top" src="{{ asset(post.image) }}" alt="Card image cap">
        <tr>{{ post.content|raw}} </tr>
     </div>
