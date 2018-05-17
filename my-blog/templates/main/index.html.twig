@@ -59,15 +59,11 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled mb-0">
+                           {% for post in posts %}
                             <li>
-                                <a href="#">Web Design</a>
+                                <a href="{{ path('article',{'articleId':post.id}) }}">{{ post.title }}</a>
                             </li>
-                            <li>
-                                <a href="#">HTML</a>
-                            </li>
-                            <li>
-                                <a href="#">Freebies</a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="col-lg-6">
