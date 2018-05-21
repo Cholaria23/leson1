@@ -22,12 +22,12 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $previewcontent;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $content;
 
@@ -46,6 +46,11 @@ class Post
      */
     private $datapost;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     */
+    private $category;
+
     public function getId()
     {
         return $this->id;
@@ -63,12 +68,12 @@ class Post
         return $this;
     }
 
-    public function getPreviewContent(): ?string
+    public function getPreviewcontent(): ?string
     {
         return $this->previewcontent;
     }
 
-    public function setPreviewContent(string $previewcontent): self
+    public function setPreviewcontent(string $previewcontent): self
     {
         $this->previewcontent = $previewcontent;
 
@@ -111,14 +116,26 @@ class Post
         return $this;
     }
 
-    public function getDataPost(): ?\DateTimeInterface
+    public function getDatapost(): ?\DateTimeInterface
     {
         return $this->datapost;
     }
 
-    public function setDataPost(?\DateTimeInterface $datapost): self
+    public function setDatapost(?\DateTimeInterface $datapost): self
     {
         $this->datapost = $datapost;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
