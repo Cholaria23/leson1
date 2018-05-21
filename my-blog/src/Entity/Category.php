@@ -24,15 +24,16 @@ class Category
     private $title;
 
 
-//    /**
-//     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent")
-//     */
-//    private $children;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
+     */
+    private $parent;
 
-//    /**
-//     * @ORM\OneToOne(targetEntity="App\Entity\Category", mappedBy="parent")
-//     */
-//    private $parents;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent")
+     */
+    private $children;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="category")
@@ -45,7 +46,7 @@ class Category
     {
         $this->posts = new ArrayCollection();
         $this->children = new ArrayCollection();
-        $this->parents = new ArrayCollection();
+        $this->parent = new ArrayCollection();
     }
 
     public function getId()
@@ -130,28 +131,28 @@ class Category
     /**
      * @return Collection|Category[]
      */
-    public function getParents(): Collection
+    public function getParent(): Collection
     {
-        return $this->parents;
+        return $this->parent;
     }
 
-    public function addParents(Category $parents): self
+    public function addParent(Category $parent): self
     {
-        if (!$this->parents->contains($parents)) {
-            $this->parents[] = $parents;
-            $parents->setParent($this);
+        if (!$this->parent->contains($parent)) {
+            $this->parent[] = $parent;
+            $parent->setParent($this);
         }
 
         return $this;
     }
 
-    public function removeParents(Category $parents): self
+    public function removeParent(Category $parent): self
     {
-        if ($this->parents->contains($parents)) {
-            $this->parents->removeElement($parents);
+        if ($this->parent->contains($parent)) {
+            $this->parent->removeElement($parent);
             // set the owning side to null (unless already changed)
-            if ($parents->getParent() === $this) {
-                $parents->setParent(null);
+            if ($parent->getParent() === $this) {
+                $parent->setParent(null);
             }
         }
 

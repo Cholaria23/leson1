@@ -19,7 +19,8 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ post.title }}</h2>
                     <p class="card-text">{{ post.previewcontent}}</p>
-                    <a href="{{path('article',{'articleId':post.id}) }}" class="btn btn-primary">Read More &rarr;</a>
+                    {#<a href="{{path('article',{'articleId':post.id}) }}" class="btn btn-primary">Read More &rarr;</a>#}
+                    <a href="{{path('show',{'slug':post.id}) }}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{ post.datapost|date("m.d.Y") }} by
@@ -78,7 +79,8 @@
 
                             {% for post in category.posts %}
                             <li>
-                                <a href="{{ path('article',{'articleId':post.id}) }}">{{ post.title }}</a>
+                                {#<a href="{{ path('article',{'articleId':post.id}) }}">{{ post.title }}</a>#}
+                                <a href="{{ path('show',{'slug':post.id}) }}">{{ post.title }}</a>
                             </li>
                             {% endfor %}
                         </ul>
