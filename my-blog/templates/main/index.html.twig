@@ -60,15 +60,33 @@
         <div class="card my-4">
             <h5 class="card-header">Side Widget</h5>
             <div class="card-body">
+                {#{% macro list(items) %}#}
+                    {#{% import _self as tree %}#}
+                    {#<ul class="ui list">#}
+                        {#{% for item in items %}#}
+                            {#<li>#}
+                                {#{{ item }}#}
+                                {#{% if citem.children %}#}
+                                    {#{{ tree.list(item.children) }}#}
+                                {#{% endif %}#}
+                            {#</li>#}
+                        {#{% endfor %}#}
+                    {#</ul>#}
+                {#{% endmacro %}#}
+
+                {#{% import _self as tree %}#}
+                {#{{ tree.list(categories) }}#}
                 You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
             </div>
         </div>
 
         <!-- Categories Widget -->
+
+
         {% for category in categories %}
         <div class="card my-4">
-
-            <h7 class="card-header">{{ category.title }}</h7>
+            {#{{ category.id }}#}
+          <h7 class="card-header">{{ category.title }}</h7>
             <div class="card-body">
 
                 <div class="row">

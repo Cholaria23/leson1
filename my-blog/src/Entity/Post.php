@@ -27,6 +27,11 @@ class Post
     private $previewcontent;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="posts")
+     */
+    private $tags;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -45,6 +50,8 @@ class Post
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $datapost;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
