@@ -42,18 +42,26 @@ class Category
      */
     private $posts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __toString()
     {
-        return $this->parent_id ? $this->parent_id : 'NEW';
+        
+        // return $this->parent_id and $this->title ? $this->parent_id and $this->title : 'NEW';
+        return $this->title ?  $this->title : 'NEW';
     }
 
     public function __construct()
     {
-        $this->posts = new Array_();
+        $this->posts = new ArrayCollection();
         $this->children = new ArrayCollection();
-      $this->parent_id = new Array_();
+      $this->parent_id = new ArrayCollection();
     }
 
+    
     public function getId()
     {
         return $this->id;
@@ -229,5 +237,22 @@ class Category
         }
         return $catgories;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function subcategory()
+{
+    return $this->hasMany(Category::class);
+}
   
 }

@@ -32,6 +32,7 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `parent_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL
+  `slug` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

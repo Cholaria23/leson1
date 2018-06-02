@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -51,12 +55,20 @@ class Post
      */
     private $datapost;
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -89,7 +101,7 @@ class Post
 
     public function getContent(): ?string
     {
-        return $this->content;
+     return $this->content;
     }
 
     public function setContent(string $content): self
@@ -140,9 +152,36 @@ class Post
         return $this->category;
     }
 
-    public function setCategory(?Category $category): self
+    public function setCategory(?Category $category = null): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+      /**
+     * @return Collection|Post[]
+     */
+     public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function setTags(Collection $tags): self
+    {
+        $this->tags = $tags;
 
         return $this;
     }

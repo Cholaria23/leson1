@@ -1,0 +1,47 @@
+{# {% extends 'base.html.twig' %}
+
+{% block body %}
+ #}
+<div id="respond" class="comment-respond">
+        {# {% if comment %} #}
+        <h3 id="title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-link" href="/#respond" style="display:none;">Отменить ответ</a></small></h3>
+        <hr></hr>
+        {# [{% for cat in category %}] #}
+            {# {% if loop.first %} #}
+        <form action="{{ path('show',{'postSlug':post.slug,'categorySlug':category.slug}) }}" method="post" id="commentform" class="comment-form">
+            <p class="comment-notes">
+                <span id="email-notes">Ваш e-mail не будет опубликован.</span> Обязательные поля помечены <span class="required">*</span>
+            </p>
+            <p class="comment-form-comment">
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+            </p>
+            <p class="comment-form-author">
+                <label for="author">Имя <span class="required">*</span></label>
+                <input id="author" name="author" type="string" value="" size="30" maxlength="245" required='required' />
+            </p>
+            <p class="comment-form-email">
+                <label for="email">E-mail <span class="required">*</span></label>
+                <input id="email" name="email" type="string" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' />
+            </p>
+            <p class="comment-form-url">
+                <label for="url">Сайт</label>
+                <input id="url" name="url" type="string" value="" size="30" maxlength="200" />
+            </p>
+            <p class="comment-form-cookies-consent">
+                <input id="comment-cookies-consent" name="comment-cookies-consent" type="checkbox" value="yes" />
+                <label for="comment-cookies-consent">Сохранить моё имя, email и адрес сайта в этом браузере для последующих моих комментариев.</label>
+            </p>
+            <p class="form-submit">
+                <input name="submit" type="submit" id="submit" class="submit" value="Отправить комментарий" />
+                <input type='hidden' name='comment_post_ID' value='2' id='comment_post_ID' />
+                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+            </p>
+            <noscript><strong><u><font color="red" size="5">To leave a comment please enable JavaScript in your browser settings!</font></u></strong></noscript>
+            {# {{ dump (loop) }} #}
+            {# {% endif %} #}
+        {# {% endfor %} #}
+        </form>
+    {# {% endif %} #}
+    </div>
+{# {% endblock %} #}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>{{ tag.title }}!</h2> 
+
+{# {{ render(controller('App\Controller\MainController::tags')) }} #}
+
+{% for post in tag.post %}
+
+    <a href="{{ path('show',{'postSlug':post.slug,'categorySlug':category.slug}) }}">{{ tag.title }}</a>|
+   	
+{% endfor %}
+
+{% endblock %}

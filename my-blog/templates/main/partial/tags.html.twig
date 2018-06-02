@@ -1,0 +1,9 @@
+{# NEW Block #}
+        
+{% for tag in tags %}
+
+{# <h2>{{ tag.title }}!</h2> #}
+
+    <a href="{{ path ('tag', {'tagTitle':tag.title}) }}">{{ tag.title }}</a>|
+   	
+{% endfor %}
