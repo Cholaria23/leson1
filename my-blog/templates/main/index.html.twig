@@ -120,8 +120,9 @@
 
         {% for category in categories %}
         <div class="card my-4">
-            {% if loop.first %}
+            {% if loop.last %}
             {{ dump (loop)}}
+
             {#{{ category.id }}#}
           <h7 class="card-header">{{ category.title }}</h7>
             <div class="card-body">

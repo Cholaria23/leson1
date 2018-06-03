@@ -86,8 +86,7 @@ class MainController extends Controller
     
     {
         $tags = $repository->findAll();
-        return $this->render('main/partial/tags.html.twig',
-        compact('tags'));# code...
+        return $this->render('main/partial/tags.html.twig',compact('tags'));
     }
 
 
