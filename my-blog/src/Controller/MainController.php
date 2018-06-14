@@ -9,6 +9,7 @@ use App\Entity\Comments;
 use Symfony\Component\Form;
 use App\Repository\TagRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -23,20 +24,25 @@ class MainController extends Controller
      * 
      *
      */
-    public function index(TagRepository $tagRepository,CategoryRepository $categoryRepository)
+    public function index(TagRepository $tagRepository,CategoryRepository $categoryRepository, PostRepository $postRepository)
     {
-        // Получене обькта через сервис контейнер
+      // Вызов сервис-контейнера Postmanager
+        // $obj = $this->get(PostManager::class);
+        // dump($obj->saveComment());
+        // die;
+        // Получене обьекта через autowiring
         // $obj = new Tag();
                 //  $obj = new PostManager();
         // $obj = new Category();
         // $obj = new Post();
                 //dump ($obj->toDo());
                 // die; 
-        // Получение тэгов через репозиторий
+        // Получение тэгов через репозиторий и autowiring
         $tags = $tagRepository->findAll();
         // Получение тэгов через доктрину
         // $tags = $this->getDoctrine()->getRepository(Tag::class)->findAll();
         // $comments = $this->getDoctrine()->getRepository(Comments::class)->findAll();
+        // Получение категорий через репозиторий и autowiring
        $categories = $categoryRepository->findAll();
        //$categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
      // $categories = new MyManager();
@@ -45,7 +51,10 @@ class MainController extends Controller
        // $categories = Category::where('parent_id', null)->get();
 //       $categories->$this->object_to_array($categories);
 //      var_dump($categories->getparent());
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        
+        // Получение постов через репозитория потов 
+        $posts = $postRepository->findAll();
+        //$posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
       return $this->render('main/index.html.twig', compact('posts','categories','tags')); 
        // return $this->render('main/index.html.twig', ['controller_name' => 'MainController']);
 //        return $this->render('main/index.html.twig', array('posts'=>$posts,'categories'=>$categories,'tags'=>$tags));
