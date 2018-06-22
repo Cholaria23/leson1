@@ -1,6 +1,6 @@
 {# {% extends  'base.html.twig' %} #}
 
-{% block  header %}
+{# {% block  header %} #}
 <!-- Header -->
 	
 	<header class="header">
@@ -90,7 +90,7 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="web/images/heart.png" alt=""></div>
+								<div class="wishlist_icon"><img src="{{ asset ("web/images/heart.png") }}" alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text"><a href="#">Wishlist</a></div>
 									<div class="wishlist_count">115</div>
@@ -133,38 +133,7 @@
 									<div class="cat_menu_text">categories</div>
 								</div>
 								
-								<ul class="cat_menu">
-								 {% for firstLevelCategory in categories %}
-									 {% if firstLevelCategory.children is empty %}
-									 	<li><a href="{{ path ('showProductsCategory',{'category':firstLevelCategory.name}) }}">{{ firstLevelCategory.name }}<i class="fas fa-chevron-right ml-auto"></i></a></li>
-									  {% else %} 
-
-									<li class="hassubs">
-										<a>{{firstLevelCategory.name}}<i class="fas fa-chevron-right"></i></a>
-										<ul>
-
-											{% for secondLevelCategory in firstLevelCategory.children %}
-												{% if secondLevelCategory.children is empty %}
-													<li><a href="{{path ('showProductsCategory',{'category':secondLevelCategory.name})}}">{{secondLevelCategory.name}}<i class="fas fa-chevron-right"></i></a></li>	
-												{% else %}
-												<li class="hassubs">
-													<a>{{secondLevelCategory.name}}<i class="fas fa-chevron-right"></i></a>
-												{# </li> #}
-												<ul>
-													{% for thirdLevelCategory in secondLevelCategory.children %}
-													<li><a href="{{path ('showProductsCategory',{'category':thirdLevelCategory.name})}}">{{thirdLevelCategory.name}}<i class="fas fa-chevron-right"></i></a></li>
-													{% endfor %}
-												</ul>
-												</li>
-												{% endif %}
-											{% endfor %}
-											
-										</ul>
-									</li>
-							{% endif %} 
-						{% endfor %}
-									
-								</ul>
+								{{ render (controller ("App\\Controller\\ProductController::category_header"))}}
 							</div>
 
 							<!-- Main Nav Menu -->
@@ -172,7 +141,7 @@
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
 									<li><a href="{{ path ("main") }}">Home<i class="fas fa-chevron-down"></i></a></li>
-									<li class="hassubs">
+									{# <li class="hassubs">
 										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li>
@@ -203,14 +172,14 @@
 											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
-									</li>
+									</li> #}
 									<li class="hassubs">
 										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li><a href="shop">Shop<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="product">Product<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="blog">Blog<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="blogsingle">Blog Post<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="blog_single">Blog Post<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="regular">Regular Post<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="cart">Cart<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="contact">Contact<i class="fas fa-chevron-down"></i></a></li>
@@ -325,4 +294,4 @@
 		</div>
 
 	</header>
-{% endblock %} 
+{# {% endblock %} #}

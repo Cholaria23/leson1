@@ -1,0 +1,9 @@
+{% block  category %}
+
+{% for category_shop in category%}
+    <ul class="sidebar_categories">
+        <li><a href="{{path("showProductsCategory")}}">{{category_shop.name}}</a></li>
+    </ul>
+	{% endfor %}
+	
+{% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Cart{% endblock %}
+
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="web/styles/bootstrap4/bootstrap.min.css">
 <link href="web/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
@@ -8,8 +10,12 @@
 {% endblock %}
 
 {% block body %}
+	
+	{% block header %}
+	{{parent()}}
 	{# {% include ("main/header.html.twig") %} #}
-{{ render (controller ('App\\Controller\\MainController::header') ) }}
+	{# {{ render (controller ('App\\Controller\\MainController::header') ) }} #}
+	{% endblock %}
 	<!-- Cart -->
 
 	<div class="cart_section">
@@ -67,12 +73,16 @@
 	</div>
 
 	<!-- Newsletter -->
-
-{{ render (controller ('App\\Controller\\MainController::newsletter') ) }}
-
+	{% block newsletter %}
+		{{parent()}}
+{# {{ render (controller ('App\\Controller\\MainController::newsletter') ) }} #}
+	{% endblock %}
 	<!-- Footer -->
+	{% block footer %}
+		{{parent()}}
+{# {% include ("main/footer.html.twig") %} #}
+	{% endblock %}
 
-{% include ("main/footer.html.twig") %}
 
 {% block javascripts %}
 <script src="web/js/jquery-3.3.1.min.js"></script>

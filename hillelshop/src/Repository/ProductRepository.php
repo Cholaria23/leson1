@@ -25,6 +25,13 @@ class ProductRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQuery("SELECT DISTINCT product.brand FROM App\Entity\Product product");
         return $query->getResult();
     }
+
+    //return lastProducts manufacturer
+    public function getLatestProduct(): array
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT product FROM App\Entity\Product product where product.status=1 ORDER BY product.id desc");
+        return $query->getResult();
+    }
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

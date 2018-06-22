@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block body %}
+	<!-- Header -->
+	{% block header %} 
+		{{ parent() }}
+	{% endblock %}
+	 {# {% include 'base/header.html.twig' %} #}  
+	
+	{# {{ render (controller ('App\\Controller\\MainController::header') ) }} #}
+
+	<!-- Banner -->
+	{% block baner %}
+	{# {% include ('base/partial/baner.html.twig') %} #}
+		{{parent()}}
+	{% endblock %}
+	
+	<!-- Characteristics -->
+	{% block characteristics %}
+	{# {% include ('base/partial/characteristics.html.twig') %} #}
+		{{parent()}}
+	{% endblock %}
+	
+	<!-- Deals of the week -->
+
+	{% block deals_of_the_week %}
+		{{parent()}}
+	{% 	endblock %}	
+
+	<!-- Popular Category -->
+	{%  block popular_categories %}
+			{{parent()}}
+	{% endblock %}				
+
+	<!-- Baner_2 -->
+	{% block banner_2 %}					
+		{{parent()}}
+	{% endblock %}				{# {{ render (controller ("App\\Controller\\CatalogController::productsList",{"max":3})) }}		 #}
+							
+	<!-- New Arrivas -->
+	{% block new_arrivals %}
+		{{parent()}}
+	{% endblock %}
+
+	<!--Best Sellers-->
+	{% block best_sellers %}
+		{{ parent() }}
+	{% endblock %}
+
+	<!-- Adverts -->
+	{% block adverts %}
+		{{ parent() }}
+	{% endblock %}
+
+	<!-- Trends -->
+	{% block trends %}
+		{{ parent() }}
+	{# {% include "base/partial/trends.html.twig" %} #}
+	{% endblock %}
+
+	<!-- Reviews -->
+	{% block reviews %}
+		{{ parent() }}
+	{# {% include "base/partial/reviews.html.twig" %} #}
+	{% endblock %}
+
+	<!-- Recently Viewed -->
+	{% block viewed %}
+		{{ parent() }}
+	{# {% include 'base/partial/viewed.html.twig' %} #}
+	{% endblock %}
+
+	<!-- Brands -->
+	{% block brands %}
+		{{ parent() }}
+	{# {% include 'base/partial/brands.html.twig' %} #}
+	{% endblock %}
+
+	<!-- Newsletter -->
+	{% block newsletter %}
+		{{ parent() }}
+{# {{ render (controller ('App\\Controller\\MainController::newsletter') ) }} #}
+	{% endblock %}
+
+	<!-- Copyright -->
+	{% block copyright %}
+	 	{{ parent() }}
+	{# {% include 'base/partial/copyrigth.html.twig' %} #}
+	{% endblock %}
+	<!--Footer -->
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
+{# {% include 'base/footer.html.twig' %} #}
+
+{% endblock %}
+

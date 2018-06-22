@@ -59,13 +59,18 @@ class Product
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $is_new;
+    private $isnew;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $is_recommended;
+    private $isrecommended;
 
+     /**
+     * @ORM\Column(type="float",nullable=true)
+     */
+    private $productdiscount;
+    
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -129,6 +134,18 @@ class Product
         return $this;
     }
 
+     public function getProductDiscount(): ?float
+    {
+        return $this->productdiscount;
+    }
+
+    public function setProductDiscount(float $productdiscount): self
+    {
+        $this->productdiscount = $productdiscount;
+
+        return $this;
+    }
+
     public function getAvailability(): ?int
     {
         return $this->availability;
@@ -177,26 +194,26 @@ class Product
         return $this;
     }
 
-    public function getIsNew(): ?int
+    public function getIsnew(): ?int
     {
-        return $this->is_new;
+        return $this->isnew;
     }
 
-    public function setIsNew(?int $is_new): self
+    public function setIsnew(?int $isnew): self
     {
-        $this->is_new = $is_new;
+        $this->isnew = $isnew;
 
         return $this;
     }
 
     public function getIsRecommended(): ?int
     {
-        return $this->is_recommended;
+        return $this->isrecommended;
     }
 
-    public function setIsRecommended(?int $is_recommended): self
+    public function setIsRecommended(?int $isrecommended): self
     {
-        $this->is_recommended = $is_recommended;
+        $this->isrecommended = $isrecommended;
 
         return $this;
     }

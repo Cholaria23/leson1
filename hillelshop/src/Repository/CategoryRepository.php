@@ -30,6 +30,13 @@ class CategoryRepository extends ServiceEntityRepository
         $query = $this->getEntityManager()->createQuery("SELECT category FROM App\Entity\Category category WHERE category.parent IS NULL");
         return $query->getResult();
     } 
+
+    //return popular_categories, where image = not null
+    public function getPopularCategories(): array
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT category FROM App\Entity\Category category WHERE category.parent IS NULL AND category.image IS NOT NULL");
+        return $query->getResult();
+    } 
  }  
 
 // class CategoryRepository extends ServiceEntityRepository
