@@ -30,9 +30,10 @@ class CatalogController extends Controller
     /**
      * @Route("/shop", name="shop")
      */
-    public function catalog()
-    {
-        return $this->render('catalog/shop/shop.html.twig');
+    public function catalog(ProductRepository $productRepository)
+    {	
+    	$products = $productRepository->getLatestProduct();
+        return $this->render('catalog/shop/shop.html.twig',compact("products"));
     }
 
  /**
