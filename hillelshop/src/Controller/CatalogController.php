@@ -8,6 +8,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Entity\Category;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class CatalogController extends Controller
@@ -30,9 +31,23 @@ class CatalogController extends Controller
     /**
      * @Route("/shop", name="shop")
      */
-    public function catalog(ProductRepository $productRepository)
+    public function catalog(ProductRepository $productRepository,Request $request)
     {	
     	$products = $productRepository->getLatestProduct();
+    	
+    	//create pagination
+    	$paginator = $this->get('knp_paginator'); 
+    	$products = $paginator ->paginate(
+            $products,
+            $request->query->getInt('page', 1),
+            5
+            // 1 /*page number*/,
+            // 6 /*limit per page*/
+        );
+    	
+    	$products->setTemplate("@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig");
+    	
+
         return $this->render('catalog/shop/shop.html.twig',compact("products"));
     }
 
