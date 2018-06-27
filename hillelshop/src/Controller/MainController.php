@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+
 // use App\Entity\Category;
 // use App\Entity\Product;
 
@@ -22,15 +23,6 @@ class MainController extends Controller
         
     }
 
-    
-   /**
-     * @Route("/product", name="product")
-     */
-    public function product()
-    {
-        return $this->render('Product/product.html.twig');
-        
-    }
   
     /**
      * @Route("/regular", name="regular")
@@ -40,15 +32,5 @@ class MainController extends Controller
         return $this->render('Regular/regular.html.twig');
         
     }
-
-    /**
-     * @Route("/cart", name="cart")
-     */
-    public function cart()
-    {
-        return $this->render('Cart/cart.html.twig');
-        
-    }
-
-      
+   
 }

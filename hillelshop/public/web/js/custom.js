@@ -27,6 +27,23 @@
 
 
 ******************************/
+// $('.product_cart_button').on('click',function(e){
+// 	e.preventDefault();
+// 	var id = $(this).data('id');
+// 	$.ajax({
+// 		url: '/cart/add',
+// 		data: {id:id},
+// 		type: 'GET',
+// 		success: function(response){
+// 			console.log(response);
+// 		},
+// 		error: function(){
+// 			aler('Error!');
+// 		}
+// 	})
+
+// });
+
 
 $(document).ready(function()
 {
