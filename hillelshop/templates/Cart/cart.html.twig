@@ -50,6 +50,9 @@
 											<div class="cart_item_title">Total</div>
 											{% set total = (item.quantity*item.product.price) %}
 											<div class="cart_item_text">${{total}}</div>
+											<div class="cart_buttons">
+												<a href="{{ path ("clear_cart",{"id":item.product.id})}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a>
+											</div>
 										</div>
 									</div>
 								</li>
@@ -67,7 +70,7 @@
 										{% set total = (item.quantity*item.product.price) %}
 										{%  set order_total = (order+total) %}
 									{# {% else %} #}
-										{# {%  set order_total = (order+total) %} #}
+										{# {%  set order_total = order %} #}
 								<div class="order_total_amount">${{order_total}}</div>
 									{% endif %}
 								{% endfor %}
@@ -76,7 +79,7 @@
 						
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear">Clear from Cart</button>
+							{# <a href="{{ path ("clear_cart")}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a> #}
 							<button type="button" class="button cart_button_checkout">Add to Cart</button>
 						</div>
 					</div>

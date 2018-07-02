@@ -37,4 +37,16 @@ class CartController extends Controller
 
         return $this->redirectToRoute('cart');
     }
+
+    /**
+     * @Route("/cart/clear/{id}", name="clear_cart")
+     */
+    public function clearCart(Request $request,Product $id)
+    {	
+        $cm = $this->get(CartManager::class);
+        $cm->clearCart($request->get("id"));
+
+        return $this->redirectToRoute('cart');
+    }
+
 }

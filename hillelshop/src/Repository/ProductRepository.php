@@ -26,6 +26,14 @@ class ProductRepository extends ServiceEntityRepository
     {
         $query = $this->getEntityManager()->createQuery("SELECT DISTINCT product.brand FROM App\Entity\Product product");
         return $query->getResult();
+
+        // return $this->createQueryBuilder('product')
+        //     ->where("product.brand IN (:id)")
+        //     ->setParameter('id', $id)
+        //     ->getQuery()
+        //     ->getResult()
+        //     ;
+
     }
 
     //return lastProducts manufacturer

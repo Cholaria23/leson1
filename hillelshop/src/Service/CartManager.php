@@ -5,7 +5,8 @@ namespace App\Service;
 use App\Repository\ProductRepository;
 use App\Entity\Product;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+// use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartManager 
 {
@@ -15,10 +16,12 @@ class CartManager
 	private $repository;
 	private $product;
 	private $qty;
+	private $session;
 
-	public function __construct(ProductRepository $repository)
+	public function __construct(ProductRepository $repository,SessionInterface $session)
 	{
 		$this->repository = $repository;
+		$this->session = $session;
 	} 
 
 	public function add(Product $id, int $quantity_input)
@@ -34,7 +37,7 @@ class CartManager
  //        return $_SESSION['cart'];
 	// 	}
 	// }
-		if($_SESSION[self::SESSION_CART_ID] && isset($_SESSION[self::SESSION_CART_ID][$id->getId()]))
+		if(isset($_SESSION[self::SESSION_CART_ID][$id->getId()]) && $_SESSION[self::SESSION_CART_ID] )
 		{
 			$_SESSION[self::SESSION_CART_ID][$id->getId()] += $quantity_input;
 			
@@ -65,6 +68,17 @@ class CartManager
 		return $result;
 	}
 
+	 public function clearCart(Product $id)
+    {   
+        // if (defined($_SESSION[self::SESSION_CART_ID][$id->getId()])) 
+        // {
+            // unset($_SESSION[self::SESSION_CART_ID][$id]);
+           
+        // }
+        unset($_SESSION[self::SESSION_CART_ID][$id->getId()]);
+     return true;   
+    }
+
 	// public function getSession()
 	// {
 	// 	 // ? $_SESSION[self::SESSION_CART_ID] : array()
@@ -72,19 +86,5 @@ class CartManager
 	// 	return self::SESSION_CART_ID;
 	// }
 
-	// /**
- //     * функция старта сессии
- //     * @return Возращает true если сессия стартовала успешно
- //     */
- //    public function start()
- //    {
- //        if($this->session_start){
- //            return true;
- //        }
- //        if(!session_start()){
- //            throw new Exception('Error session start');
- //        }
- //        $this->session_start = true;
- //        return true;
- //    }
+	
 }
