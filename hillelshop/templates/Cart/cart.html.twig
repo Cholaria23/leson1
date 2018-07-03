@@ -64,23 +64,29 @@
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">Order Total:</div>
+								{% set order = 0 %}
 								{% for item in cart %}
-									{% set order = 0 %}
+									{# {% set order = 0 %} #}
 									{% if loop.length is not empty %}
 										{% set total = (item.quantity*item.product.price) %}
 										{%  set order_total = (order+total) %}
+
 									{# {% else %} #}
-										{# {%  set order_total = order %} #}
-								<div class="order_total_amount">${{order_total}}</div>
+										{%  set order = order_total %}
+								{# <div class="order_total_amount">${{order_total}}</div> #}
+									{% endif %}
+									{% if loop.last %}
+									<div class="order_total_amount">${{order_total}}</div>
 									{% endif %}
 								{% endfor %}
+								
 							</div>
 						</div>
 						
 
 						<div class="cart_buttons">
 							{# <a href="{{ path ("clear_cart")}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a> #}
-							<button type="button" class="button cart_button_checkout">Add to Cart</button>
+							<button type="button" class="button cart_button_checkout">Checkout</button>
 						</div>
 					</div>
 					
