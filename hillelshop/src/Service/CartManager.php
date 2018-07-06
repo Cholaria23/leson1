@@ -68,14 +68,14 @@ class CartManager
 		return $result;
 	}
 
-	 public function clearCart(Product $id)
+	 public function removeProductFromCart(Product $product_id)
     {   
-        // if (defined($_SESSION[self::SESSION_CART_ID][$id->getId()])) 
+        // if (isset($_SESSION[self::SESSION_CART_ID][$product_id])) 
         // {
-            // unset($_SESSION[self::SESSION_CART_ID][$id]);
+        //     unset($_SESSION[self::SESSION_CART_ID][$product_id->getId()]);
            
         // }
-        unset($_SESSION[self::SESSION_CART_ID][$id->getId()]);
+        unset($_SESSION[self::SESSION_CART_ID][$product_id->getId()]);
      return true;   
     }
 

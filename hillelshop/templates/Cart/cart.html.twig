@@ -7,6 +7,8 @@
 <link href="web/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="web/styles/cart_styles.css">
 <link rel="stylesheet" type="text/css" href="web/styles/cart_responsive.css">
+<link rel="stylesheet" type="text/css" href="web/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="web/styles/contact_responsive.css">
 {% endblock %}
 
 {% block body %}
@@ -51,7 +53,7 @@
 											{% set total = (item.quantity*item.product.price) %}
 											<div class="cart_item_text">${{total}}</div>
 											<div class="cart_buttons">
-												<a href="{{ path ("clear_cart",{"id":item.product.id})}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a>
+												<a href="{{ path ("clear_cart",{"id":item.product.id})}}"><button type="submit" class="button cart_button_checkout">Clear from Cart</button></a>
 											</div>
 										</div>
 									</div>
@@ -82,18 +84,29 @@
 								
 							</div>
 						</div>
-						
-
-						<div class="cart_buttons">
-							{# <a href="{{ path ("clear_cart")}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a> #}
-							<button type="button" class="button cart_button_checkout">Checkout</button>
-						</div>
-					</div>
+		{# <div class="container"> #}
+			
+					
+					{# <div class="cart_buttons">
+								<a href="{{ path ("clear_cart")}}"><button type="submit" class="button cart_button_clear">Clear from Cart</button></a>
+								<button type="submit" class="button cart_button_checkout">Checkout</button>
+					</div> #}
+				{# </div> #}
+			{# </div> #}
+		{# </div> #}
+				</div>
 					
 				</div>
+
 			</div>
+
+
 		</div>
+		<br></br>
+		<!--Form Cart-->
+{% include ("Cart/partial/form_cart.html.twig") %}
 	</div>
+
 
 	<!-- Newsletter -->
 	{% block newsletter %}

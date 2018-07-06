@@ -102,11 +102,24 @@
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
 										<img src="{{asset ("web/images/cart.png")}}" alt="">
-										<div class="cart_count"><span>10</span></div>
+										{% for item in cart %}
+										<div class="cart_count"><span>{{loop.length}}</span></div>
+										{% endfor %}
 									</div>
 									<div class="cart_content">
 										<div class="cart_text"><a href="{{path ("cart") }}">Cart</a></div>
-										<div class="cart_price">$85</div>
+										{% set order_total = 0 %}
+										{% set order = 0 %}
+										{% for item in cart %}
+											{% if loop.length is not empty %}
+												{% set total = (item.quantity*item.product.price) %}
+												{%  set order_total = (order+total) %}
+												{%  set order = order_total %}
+											{% endif %}
+											{% if loop.last %}
+										<div class="cart_price">${{order_total}}</div>
+											{% endif %}
+										{% endfor %}
 									</div>
 								</div>
 							</div>

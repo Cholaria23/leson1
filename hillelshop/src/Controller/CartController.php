@@ -34,6 +34,13 @@ class CartController extends Controller
         $cm = $this->get(CartManager::class);
          // $quantity_input = $request->get("quantity_input");
         $cm->add($id,$request->get("quantity_input"));
+        $url =$request->get($_SERVER['REQUEST_URI']);
+        dump($_SERVER['REQUEST_URI']);
+        if ($url = '/')
+        {
+        	return $this->redirectToRoute("main");
+        		// $url = $this->generateUrl( 'main');
+        }
 
         return $this->redirectToRoute('cart');
     }
@@ -44,7 +51,7 @@ class CartController extends Controller
     public function clearCart(Request $request,Product $id)
     {	
         $cm = $this->get(CartManager::class);
-        $cm->clearCart($request->get("id"));
+        $cm->removeProductFromCart($request->get("id"));
 
         return $this->redirectToRoute('cart');
     }

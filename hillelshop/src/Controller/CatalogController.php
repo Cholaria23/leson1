@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Entity\Category;
+use App\Service\CartManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -23,9 +24,10 @@ class CatalogController extends Controller
 	{
 		$categories = $categoryRepository ->getPopularCategories();
 		$products = $productRepository->getLatestProduct();
-		// dump($categories);
+        $cart = $this->get(CartManager::class)->getCart();
+		dump($cart);
 		// die;
-		return $this->render('base/index.html.twig', compact("categories","products") );	
+		return $this->render('base/index.html.twig', compact("categories","products","cart"));	
 	}
 
     /**
