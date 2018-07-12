@@ -27,6 +27,12 @@ class ProductImage
     private $filepath;
     
 
+    public function __toString()
+    {    
+        // return $this->parent_id and $this->title ? $this->parent_id and $this->title : 'NEW';
+        return $this->filepath ?  $this->filepath : 'NEW';
+    }
+
     public function getId()
     {
         return $this->id;
